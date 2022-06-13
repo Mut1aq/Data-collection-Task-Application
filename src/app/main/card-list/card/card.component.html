@@ -1,0 +1,23 @@
+<div class="col">
+  <div class="container w-100 h-100">
+    <mat-card class="example-card">
+      <mat-card-title-group>
+        <mat-card-title
+          ><i class="fa-solid fa-circle-check"></i
+        ></mat-card-title>
+        <mat-card-subtitle> {{ surveyData["SurveyName"] }} </mat-card-subtitle>
+      </mat-card-title-group>
+      <hr />
+      <div *ngIf="surveyData['SurveyPeriods'].length < 1; else elseBlock">
+        {{ surveyData["SurveyPeriods"] }}
+      </div>
+      <ng-template #elseBlock>dropdown</ng-template>
+      <!-- <div ngClass="multiDate">
+        <mat-card-content>
+          {{ surveyData["SurveyPeriods"] }}
+        </mat-card-content>
+      </div> -->
+    </mat-card>
+  </div>
+</div>
+<br />
