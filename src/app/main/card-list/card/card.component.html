@@ -1,23 +1,37 @@
-<div class="col">
-  <div class="container w-100 h-100">
-    <mat-card class="example-card">
-      <mat-card-title-group>
-        <mat-card-title
-          ><i class="fa-solid fa-circle-check"></i
-        ></mat-card-title>
-        <mat-card-subtitle> {{ surveyData["SurveyName"] }} </mat-card-subtitle>
-      </mat-card-title-group>
-      <hr />
-      <div *ngIf="surveyData['SurveyPeriods'].length < 1; else elseBlock">
-        {{ surveyData["SurveyPeriods"] }}
+<div id="card" class="col-lg-12 m-2 text-center">
+  <div [ngSwitch]="surveyData['SURVEY_STATUS_EN']" class="">
+    <i *ngSwitchCase="'Published'" class="fa-solid fa-circle-check mx-auto"></i>
+    <i *ngSwitchCase="'Expired'" class="fa-solid fa-clock"></i>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ surveyData["SurveyName"] }}</h5>
+  </div>
+  <div class="card-header">
+    <div *ngIf="multiDate; else elseBlock">
+      <div class="dropdown overflow-auto">
+        <button
+          class="btn btn-success dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Select Period
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li *ngFor="let SurveyDate of surveyData['SurveyPeriods']">
+            <a class="dropdown-item" href="#">
+              {{ SurveyDate["START_DATE"] | date }} -
+              {{ SurveyDate["END_DATE"] | date }}
+            </a>
+          </li>
+        </ul>
       </div>
-      <ng-template #elseBlock>dropdown</ng-template>
-      <!-- <div ngClass="multiDate">
-        <mat-card-content>
-          {{ surveyData["SurveyPeriods"] }}
-        </mat-card-content>
-      </div> -->
-    </mat-card>
+    </div>
+    <ng-template #elseBlock
+      >{{ surveyData["SurveyPeriods"][0]["START_DATE"] | date }} -
+      {{ surveyData["SurveyPeriods"][0]["END_DATE"] | date }}
+    </ng-template>
   </div>
 </div>
-<br />
