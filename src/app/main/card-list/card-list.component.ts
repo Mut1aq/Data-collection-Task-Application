@@ -10,20 +10,21 @@ import { Survey } from 'src/app/models/survey.model';
 export class CardListComponent implements OnInit {
   constructor(public http: HttpClient) {}
   surveys: Survey[] = [];
+  selectedCardId: number;
 
   ngOnInit(): void {
     this.http
       .get('https://mocki.io/v1/fec2e155-8904-4dc8-a97a-2b7015f474ed')
       .subscribe(
         (data) => {
-          this.surveys = data[0];
-          for (const survey of this.surveys) {
-            console.log(JSON.parse(survey['SurveyPeriods']), '*');
-          }
+          this.surveys = data[0] ?? [];
         },
         (err) => {
           console.log(err);
         }
       );
+  }
+  onSelectCard(id: number) {
+    this.selectedCardId = id;
   }
 }

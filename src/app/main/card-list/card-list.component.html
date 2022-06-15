@@ -1,5 +1,5 @@
-<div class="container w-100">
-  <div class="row row-cols-lg-5 overflow-auto">
+<div class="container">
+  <div class="row row-cols-4" (click)="onSelectCard($event)">
     <app-card *ngFor="let survey of surveys" [surveyData]="survey"></app-card>
   </div>
 </div>
