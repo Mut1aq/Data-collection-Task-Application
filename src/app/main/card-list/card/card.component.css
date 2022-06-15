@@ -2,11 +2,14 @@
   color: rgb(48, 219, 48);
   background-color: white;
 }
-#card {
+.cards {
   border-top: 3px solid rgb(48, 219, 48);
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
 }
-#card:hover {
+.cards:hover {
   border: 3px solid rgb(48, 219, 48);
+}
+.selected {
+  border: 3px solid rgb(48, 219, 48);
+  border-left: 5px solid rgb(48, 219, 48);
+  border-right: 5px solid rgb(48, 219, 48);
 }

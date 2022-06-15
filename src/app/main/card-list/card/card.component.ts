@@ -9,7 +9,7 @@ export class CardComponent implements OnInit {
   @Output() click = new EventEmitter<{ id: number }>();
   multiDate: boolean;
   @Input() surveyData: [{}];
-  selectedCard: number;
+  @Input() gloId: number;
 
   constructor() {}
 
@@ -26,13 +26,27 @@ export class CardComponent implements OnInit {
     this.multiDate =
       this.surveyData['SurveyPeriods'] &&
       this.surveyData['SurveyPeriods'].length > 1;
-
-    // console.log(this.surveyData['SurveyPeriods'], this.multiDate);
   }
   onSelectCard() {
-    this.click.emit({
-      id: this.selectedCard,
-    });
-    console.log(this.selectedCard, '****');
+    if (this.gloId === this.surveyData['TEMPLATE_ID']) {
+      this.gloId = 0;
+    } else {
+      this.gloId = this.surveyData['TEMPLATE_ID'];
+      this.click.emit({
+        id: this.gloId,
+      });
+    }
+
+    console.log(this.gloId);
+
+    // let cards = document.getElementsByClassName('selected');
+    // cards[0]?.classList.remove('selected');
+
+    // let selected = document.getElementById(this.selectedCard.toString());
+    // selected.classList.add('selected');
+  }
+
+  setClasses() {
+    return this.surveyData['TEMPLATE_ID'] === this.gloId;
   }
 }

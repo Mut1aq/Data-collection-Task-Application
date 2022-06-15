@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="row row-cols-4" (click)="onSelectCard($event)">
-    <app-card *ngFor="let survey of surveys" [surveyData]="survey"></app-card>
+  <div class="row row-cols-4">
+    <app-card
+      *ngFor="let survey of surveys"
+      [surveyData]="survey"
+      (click)="onSelectCard($event)"
+      [selectedId]="gloId"
+    ></app-card>
   </div>
 </div>
