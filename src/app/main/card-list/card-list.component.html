@@ -1,10 +1,65 @@
+<div class="row justify-content-evenly p-2">
+  <div class="container">
+    <div
+      class="alert alert-primary alert-dismissible fade show mt-3"
+      role="alert"
+    >
+      <i class="fa-solid fa-circle-info mr-2"></i>
+      <span>Information: Select Template to Continue</span>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="Published"> </mat-tab>
+      <mat-tab label="Expired"> </mat-tab>
+      <mat-tab label="Closed"> </mat-tab>
+      <mat-tab label="All Surveys"> </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="col-4 w-50"></div>
+  <div class="ml-5 col-4 w-50">
+    <div class="input-group mb-3">
+      <button
+        mat-raised-button
+        (click)="openDialog()"
+        type="button"
+        class="btn btn-primary"
+        [disabled]="!dashboardEnable"
+      >
+        Go to dashboard
+      </button>
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Survey Name"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+      >
+        Filter
+      </button>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row row-cols-4">
     <app-card
       *ngFor="let survey of surveys"
       [surveyData]="survey"
-      (click)="onSelectCard($event)"
+      (click)="onSelectCard(survey['TEMPLATE_ID'])"
       [selectedId]="gloId"
+      [buttonEnable]="dashboardEnable"
     ></app-card>
   </div>
 </div>
