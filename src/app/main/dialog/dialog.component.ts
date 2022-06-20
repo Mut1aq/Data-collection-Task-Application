@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent implements OnInit {
-  surveys: Survey[] = [];
+  survey: {};
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -16,14 +16,7 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.surveysService.fetchSurveys().subscribe(
-      (data) => {
-        this.surveys = data[0];
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    // console.log(this.surveys.find((survey) => survey['TEMPLATE_ID'] === this.gloId));
+    this.survey = this.surveysService.getSurvey();
+    console.log(this.survey['SurveyName']);
   }
 }

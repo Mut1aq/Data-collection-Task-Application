@@ -7,13 +7,19 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+
 import { CardListComponent } from './main/card-list/card-list.component';
 import { CardComponent } from './main/card-list/card/card.component';
+
 import { DialogComponent } from './main/dialog/dialog.component';
+import { StatusTabComponent } from './main/status-tab/status-tab.component';
+import { GridListComponent } from './main/grid-list/grid-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +29,8 @@ import { DialogComponent } from './main/dialog/dialog.component';
     CardListComponent,
     CardComponent,
     DialogComponent,
+    StatusTabComponent,
+    GridListComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,8 @@ import { DialogComponent } from './main/dialog/dialog.component';
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
