@@ -8,7 +8,7 @@ import { SurveysService } from 'src/app/services/surveys.service';
 })
 export class CardComponent implements OnInit {
   @Output() click = new EventEmitter<{ id: number }>();
-  @Input() surveyData: [{}];
+  @Input() surveyData: {};
   @Input() selectedId: number;
 
   multiDate: boolean;
@@ -30,7 +30,10 @@ export class CardComponent implements OnInit {
   }
 
   onSelectCard() {
-    if (this.selectedId === this.surveyData['TEMPLATE_ID']) {
+    if (
+      this.surveysService.getSurvey()['TEMPLATE_ID'] ===
+      this.surveyData['TEMPLATE_ID']
+    ) {
       this.selectedId = 0;
       this.surveysService.setSurvey(0);
       console.log(this.surveysService.getSurvey());

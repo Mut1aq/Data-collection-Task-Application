@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +21,7 @@ import { CardComponent } from './main/card-list/card/card.component';
 import { DialogComponent } from './main/dialog/dialog.component';
 import { StatusTabComponent } from './main/status-tab/status-tab.component';
 import { GridListComponent } from './main/grid-list/grid-list.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { GridListComponent } from './main/grid-list/grid-list.component';
     MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
