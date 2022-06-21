@@ -1,0 +1,27 @@
+.initials-circle {
+  background-color: #b9ebf0;
+  border: 1px solid #b9ebf0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding: 8px;
+  color: #4ca3ac;
+}
+/*  */
+
+.reset-a,
+.reset-a:hover,
+.reset-a:visited,
+.reset-a:focus,
+.reset-a:active {
+  text-decoration: none;
+  color: #43415a;
+  outline: 0;
+  cursor: pointer;
+}
+div + div {
+  margin-left: 10px;
+}
+#user-info {
+  margin: auto;
+}

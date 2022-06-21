@@ -1,0 +1,22 @@
+<!-- Future Component-->
+<div class="d-flex justify-content-between">
+  <div id="user-info" class="text-center initials-circle">{{ initials }}</div>
+
+  <div class="dropdown mt-2">
+    <a
+      class="dropdown-toggle reset-a"
+      href="#"
+      role="button"
+      id="dropdownMenuLink"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      {{ username }}
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Logout</a></li>
+    </ul>
+  </div>
+</div>

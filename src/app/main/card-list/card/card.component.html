@@ -1,7 +1,7 @@
-<div class="col-lg-12 m-2 text-center w-100 h-100">
+<div class="col-lg-12 text-center w-auto" id="card-boarder">
   <div
     (click)="onSelectCard()"
-    class="cards"
+    class="cards w-auto"
     [ngClass]="{ selected: setClasses() }"
   >
     <div [ngSwitch]="surveyData['SURVEY_STATUS_EN']">
@@ -15,9 +15,9 @@
     <div class="card-body">
       <h5 class="card-title">{{ surveyData["SurveyName"] }}</h5>
     </div>
-    <div class="card-header">
+    <div class="w-50 m-auto p-auto">
       <div *ngIf="multiDate; else elseBlock">
-        <div class="dropdown overflow-auto">
+        <div class="dropdown">
           <button
             class="btn btn-success dropdown-toggle"
             type="button"

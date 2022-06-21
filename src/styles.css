@@ -10,16 +10,7 @@ body {
 }
 body {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: lightgrey;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
 }
