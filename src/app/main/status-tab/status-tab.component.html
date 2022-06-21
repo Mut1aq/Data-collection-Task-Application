@@ -14,7 +14,7 @@
   </div>
   <div class="col-6 w-50">
     <div>
-      <mat-tab-group>
+      <mat-tab-group class="">
         <mat-tab label="Published"> </mat-tab>
         <mat-tab label="Expired"> </mat-tab>
         <mat-tab label="Closed"> </mat-tab>
@@ -29,7 +29,8 @@
         mat-raised-button
         (click)="openDialog()"
         type="button"
-        class="btn btn-primary"
+        id="dashboard-btn"
+        class="btn"
         [disabled]="!this.surveysService.selectedId"
       >
         Go to dashboard

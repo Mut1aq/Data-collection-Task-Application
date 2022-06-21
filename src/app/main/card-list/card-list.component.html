@@ -1,11 +1,9 @@
-<div class="container">
-  <i class="fa-thin fa-grid"></i>
-  <div class="row row-cols-4">
-    <app-card
-      *ngFor="let survey of surveys"
-      (click)="onSelectCard(survey['TEMPLATE_ID'])"
-      [selectedId]="this.surveysService.getSurvey()['TEMPLATE_ID']"
-      [surveyData]="survey"
-    ></app-card>
-  </div>
+<div class="row row-cols-4 mb-5">
+  <app-card
+    class="mb-2"
+    *ngFor="let survey of surveys"
+    (click)="onSelectCard(survey['TEMPLATE_ID'])"
+    [selectedId]="this.surveysService.getSurvey()['TEMPLATE_ID']"
+    [surveyData]="survey"
+  ></app-card>
 </div>

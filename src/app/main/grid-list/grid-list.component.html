@@ -3,8 +3,8 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
 </mat-form-field>
 
-<div class="mat-elevation-z8 table-date">
-  <table mat-table [dataSource]="dataSource" matSort>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="data-table">
     <!-- ID Column -->
     <ng-container matColumnDef="Survey Name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Survey Name</th>
@@ -52,6 +52,7 @@
             </ul>
           </div>
         </div>
+        <ng-template #elseBlock> </ng-template>
       </td>
     </ng-container>
 

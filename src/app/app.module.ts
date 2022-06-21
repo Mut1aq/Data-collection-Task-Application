@@ -22,6 +22,7 @@ import { DialogComponent } from './main/dialog/dialog.component';
 import { StatusTabComponent } from './main/status-tab/status-tab.component';
 import { GridListComponent } from './main/grid-list/grid-list.component';
 import { MatSortModule } from '@angular/material/sort';
+import { UsernameComponent } from './header/username/username.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
     DialogComponent,
     StatusTabComponent,
     GridListComponent,
+    UsernameComponent,
   ],
   imports: [
     BrowserModule,
