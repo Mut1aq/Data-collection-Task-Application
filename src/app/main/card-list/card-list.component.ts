@@ -20,6 +20,7 @@ export class CardListComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.surveysService.fetchSurveys();
     this.surveys = this.surveysService.getSurveys();
+    console.log(this.surveysService.surveys);
   }
   onSelectCard(id: number) {
     this.surveysService.setSurvey(id);

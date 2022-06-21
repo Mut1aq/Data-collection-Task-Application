@@ -27,8 +27,14 @@ export class SurveysService {
   }
   setSurvey(id: number) {
     // console.log(this.selectedId);
-    this.selectedId = id;
-    console.log(this.selectedId);
+    if (this.selectedId === id) {
+      this.selectedId = undefined;
+      console.log(this.selectedId, 'undefined case', id);
+    } else {
+      console.log(this.selectedId, 'defined case', id);
+
+      this.selectedId = id;
+    }
   }
   getSurvey() {
     // console.log(this.selectedId);

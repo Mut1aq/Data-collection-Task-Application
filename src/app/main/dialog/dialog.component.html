@@ -2,6 +2,6 @@
 <mat-dialog-content>Data to send back</mat-dialog-content>
 <input matInput #newSurveyName type="text" name="" id="" />
 <mat-dialog-actions>
-  <button mat-dialog-close mat-dialog-close="false">No Thanks</button>
+  <button [mat-dialog-close]="">No Thanks</button>
   <button [mat-dialog-close]="newSurveyName.value">Ok</button>
 </mat-dialog-actions>
