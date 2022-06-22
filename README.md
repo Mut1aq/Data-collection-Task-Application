@@ -1,10 +1,16 @@
-# Story1
+# Task 1
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+This project uses a lot of the Angular functionality and methods, and strictly TypeScript for optimized compatibility
 
-## Development server
+## Use
+
+This a survey based application, currently using fake data from https://mocki.io/ to create surveys. Hopefully in the future there will be a custom backend for this application
+
+## Development
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+OR
+Run `npm start`
 
 ## Code scaffolding
 
