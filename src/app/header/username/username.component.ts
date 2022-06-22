@@ -12,7 +12,7 @@ export class UsernameComponent implements OnInit {
   )}`;
 
   constructor() {
-    console.log(this.initials);
+    // console.log(this.initials);
   }
 
   ngOnInit(): void {}

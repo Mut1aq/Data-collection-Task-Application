@@ -12,35 +12,43 @@ import { SurveysService } from '../../services/surveys.service';
 })
 export class GridListComponent {
   surveys: Survey[] = [];
-  displayedColumns: string[] = ['Survey Name', 'From', 'To', 'Period'];
-  dataSource: MatTableDataSource<Survey>;
+  displayedColumns: string[] = ['SurveyName', 'From', 'To', 'Period'];
+  dataSource: MatTableDataSource<any>;
+  result: any;
 
-  async ngOnInit(): Promise<void> {
-    await this.surveysService.fetchSurveys();
+  constructor(public surveysService: SurveysService) {}
+
+  ngOnInit() {
     this.surveys = this.surveysService.getSurveys();
+    console.log(this.surveys);
 
-    for (const survey of this.surveys) {
-      if (!survey['SurveyPeriods']) {
-        survey['SurveyPeriods'] =
-          '[{"ID":21659,"START_DATE":"2021-01-26T00:00:00","END_DATE":"2022-02-28T00:00:00"}]';
+    this.surveys.forEach((survey) => {
+      for (const singleSurvey in survey) {
+        if (!survey[singleSurvey]['SurveyPeriods']) {
+          survey[singleSurvey]['SurveyPeriods'] =
+            '[{"ID":21659,"START_DATE":"2021-01-26T00:00:00","END_DATE":"2022-02-28T00:00:00"}]';
+          // chosenSurvey = survey[singleSurvey];
+        }
+        survey[singleSurvey]['SurveyPeriods'] = JSON.parse(
+          survey[singleSurvey]['SurveyPeriods']
+        );
+        survey[singleSurvey]['multiDate'] =
+          survey[singleSurvey]['SurveyPeriods'] &&
+          survey[singleSurvey]['SurveyPeriods'].length > 1;
       }
-      survey['SurveyPeriods'] = JSON.parse(survey['SurveyPeriods']);
+    });
+  }
 
-      survey['multiDate'] =
-        survey['SurveyPeriods'] && survey['SurveyPeriods'].length > 1;
-      console.log(survey['SurveyPeriods']);
-    }
+  ngAfterViewInit() {
+    this.result = this.surveys[0];
 
-    this.dataSource = new MatTableDataSource(this.surveys);
-
+    this.dataSource = new MatTableDataSource(this.result);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
-  constructor(public surveysService: SurveysService) {}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

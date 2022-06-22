@@ -16,7 +16,8 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.survey = this.surveysService.getSurvey();
-    console.log(this.survey['SurveyName']);
+    this.survey = this.surveysService.getSurveyById(
+      this.surveysService.selectedId
+    );
   }
 }
