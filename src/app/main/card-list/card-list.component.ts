@@ -17,10 +17,11 @@ export class CardListComponent implements OnInit {
     private surveysService: SurveysService
   ) {}
 
-  async ngOnInit(): Promise<void> {
-    await this.surveysService.fetchSurveys();
-    this.surveys = this.surveysService.getSurveys();
-    console.log(this.surveysService.surveys);
+  ngOnInit() {
+    this.surveys = this.surveysService.surveys;
+    // await this.surveysService.fetchSurveys();
+    // this.surveys = this.surveysService.getSurveys();
+    // console.log(this.surveys);
   }
   onSelectCard(id: number) {
     this.surveysService.setSurvey(id);

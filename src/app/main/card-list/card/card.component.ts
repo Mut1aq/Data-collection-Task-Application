@@ -36,18 +36,18 @@ export class CardComponent implements OnInit {
     ) {
       this.selectedId = 0;
       this.surveysService.setSurvey(0);
-      console.log(this.surveysService.getSurvey());
     } else {
       this.selectedId = this.surveyData['TEMPLATE_ID'];
       this.click.emit({
         id: this.selectedId,
       });
       this.surveysService.setSurvey(this.selectedId);
-      // console.log(this.surveysService.getSurvey());
     }
   }
 
   setClasses() {
-    return this.selectedId == this.surveyData['TEMPLATE_ID'] ? 'selected' : '';
+    return this.surveysService.selectedId == this.surveyData['TEMPLATE_ID']
+      ? 'selected'
+      : '';
   }
 }

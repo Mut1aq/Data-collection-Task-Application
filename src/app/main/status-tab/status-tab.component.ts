@@ -22,14 +22,18 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
+    console.log('1');
     // await this.surveysService.fetchSurveys();
     // this.surveys = this.surveysService.getSurveys();
     // console.log(this.surveys);
   }
+
   openDialog() {
-    const currentSurvey = this.surveysService.getSurvey();
-    console.log(currentSurvey);
+    const currentSurvey = this.surveysService.getSurveyById(
+      this.surveysService.selectedId
+    );
+    console.log(this.surveysService.getSurvey());
 
     let dialogRef = this.dialog.open(DialogComponent, {
       data: currentSurvey,
@@ -38,12 +42,13 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(currentSurvey, '***', currentSurvey['SurveyName']);
       let english = /^[A-Za-z0-9]*$/;
-      if (result.length > 4 && english.test(result)) {
-        this.surveysService.modifyData(result);
+      console.log(result);
+      if (result === 'noChange') {
+        console.log('No Changes made');
+      } else if (result.length >= 4 && english.test(result)) {
         currentSurvey['SurveyName'] = result;
-        console.log(currentSurvey, '***', currentSurvey['SurveyName']);
       } else {
-        console.log(`${result} must be English and more then 4 characters`);
+        console.log('Name must be English and more than 4 char');
       }
     });
   }
