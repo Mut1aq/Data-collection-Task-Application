@@ -1,6 +1,12 @@
 <section class="container">
   <app-status-tab class="w-100"></app-status-tab>
-  <button>List</button><button>Grid</button>
-  <!-- <app-card-list class="w-100"></app-card-list> -->
-  <app-grid-list></app-grid-list>
+
+  <div>
+    <button value="list" (click)="viewChange($event.target)">list</button>
+    <button value="grid" (click)="viewChange($event.target)">Grid</button>
+  </div>
+  <div [ngSwitch]="selectedType">
+    <app-grid-list *ngSwitchCase="'grid'"></app-grid-list>
+    <app-card-list *ngSwitchDefault class="w-100"></app-card-list>
+  </div>
 </section>

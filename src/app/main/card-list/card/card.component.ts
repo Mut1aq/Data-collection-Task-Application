@@ -15,19 +15,7 @@ export class CardComponent implements OnInit {
 
   constructor(private surveysService: SurveysService) {}
 
-  ngOnInit(): void {
-    if (!this.surveyData['SurveyPeriods']) {
-      this.surveyData['SurveyPeriods'] =
-        '[{"ID":21659,"START_DATE":"2021-01-26T00:00:00","END_DATE":"2022-02-28T00:00:00"}]';
-    }
-    this.surveyData['SurveyPeriods'] = JSON.parse(
-      this.surveyData['SurveyPeriods']
-    );
-
-    this.multiDate =
-      this.surveyData['SurveyPeriods'] &&
-      this.surveyData['SurveyPeriods'].length > 1;
-  }
+  ngOnInit(): void {}
 
   onSelectCard() {
     if (

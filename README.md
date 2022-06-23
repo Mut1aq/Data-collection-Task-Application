@@ -4,7 +4,7 @@ This project uses a lot of the Angular functionality and methods, and strictly T
 
 ## Use
 
-This a survey based application, currently using fake data from https://mocki.io/ to create surveys. Hopefully in the future there will be a custom backend for this application
+This a survey based application, currently using fake data from <https://mocki.io/> to create surveys. Hopefully in the future there will be a custom backend for this application
 
 ## Development
 

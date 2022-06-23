@@ -10,7 +10,5 @@ export class HeaderComponent implements OnInit {
   imageAlt: string = 'logo';
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('header');
-  }
+  ngOnInit(): void {}
 }

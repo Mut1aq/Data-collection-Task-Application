@@ -10,6 +10,11 @@ import { SurveysService } from '../services/surveys.service';
 })
 export class MainComponent implements OnInit {
   surveys: Survey[] = [];
+  selectedType: string;
+
+  viewChange(el: HTMLElement) {
+    this.selectedType = el.attributes[1].value;
+  }
 
   constructor(
     private router: ActivatedRoute,
@@ -18,21 +23,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.data.subscribe((res: any) => {
-      // console.log('hi');
       this.surveys = res.surveys;
     });
-    // console.log(this.surveyService.surveys);
   }
-
-  // ngOnInit() {
-  //   this.router.data.subscribe(({ hero }) => {
-  //     console.log(hero);
-  // do something with your resolved data ...
-  //   });
-
-  // const resolvedData = this.router.snapshot.data['resolvedData'];
-  // this.surveys = resolvedData.surveys;
-  // console.log(this.surveyService.getSurveys());
-  // console.log(this.router.snapshot.data.resolvedData);
-  // }
 }

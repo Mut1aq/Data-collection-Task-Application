@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SurveysService {
   API_URL: string = 'https://mocki.io/v1/fec2e155-8904-4dc8-a97a-2b7015f474ed';
 
-  surveys: Survey[] = [];
+  surveys: any = [];
 
   selectedId: number;
 
@@ -24,15 +24,7 @@ export class SurveysService {
     return this.surveys;
   }
   setSurvey(id: number) {
-    // console.log(this.selectedId);
-    if (this.selectedId === id) {
-      this.selectedId = undefined;
-      // console.log(this.selectedId, 'undefined case', id);
-    } else {
-      // console.log(this.selectedId, 'defined case', id);
-
-      this.selectedId = id;
-    }
+    this.selectedId = this.selectedId === id ? undefined : id;
   }
   getSurvey() {
     // console.log(this.surveys);
@@ -62,7 +54,12 @@ export class SurveysService {
     return chosenSurvey;
   }
 
-  modifyData(newData: string) {
-    this.getSurvey();
+  filterSurveys(filter: string) {
+    console.log(this.surveys);
+    this.surveys[0] = this.surveys[0].filter((e) => {
+      console.log(e.SurveyName.toLowerCase(), '***', filter.toLowerCase());
+      return e.SurveyName.toLowerCase().includes(filter.toLowerCase());
+    });
+    console.log(this.surveys);
   }
 }
