@@ -20,7 +20,6 @@ export class SurveyDataResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.surveysService.fetchSurveys().pipe(
       map((value) => {
-        console.log(value);
         this.surveysService.surveys = value;
 
         // Fix Null values in Survey data
@@ -41,6 +40,8 @@ export class SurveyDataResolver implements Resolve<any> {
               survey[singleSurvey]['SurveyPeriods'].length > 1;
           }
         });
+
+        this.surveysService.filteredData.push(...this.surveysService.surveys);
         return value;
       })
     );

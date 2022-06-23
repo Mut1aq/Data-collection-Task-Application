@@ -10,10 +10,18 @@ import { SurveysService } from '../services/surveys.service';
 })
 export class MainComponent implements OnInit {
   surveys: Survey[] = [];
-  selectedType: string;
+  viewGrid: boolean = true;
+  viewList: boolean = false;
 
   viewChange(el: HTMLElement) {
-    this.selectedType = el.attributes[1].value;
+    let choice = el.parentElement.attributes[1].value;
+    if (choice === 'list') {
+      this.viewGrid = true;
+      this.viewList = false;
+    } else {
+      this.viewGrid = false;
+      this.viewList = true;
+    }
   }
 
   constructor(

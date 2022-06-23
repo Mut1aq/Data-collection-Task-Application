@@ -12,6 +12,7 @@ export class SurveysService {
   API_URL: string = 'https://mocki.io/v1/fec2e155-8904-4dc8-a97a-2b7015f474ed';
 
   surveys: any = [];
+  filteredData: any = [];
 
   selectedId: number;
 
@@ -21,7 +22,7 @@ export class SurveysService {
     return this.http.get<Survey[]>(this.API_URL);
   }
   getSurveys() {
-    return this.surveys;
+    return [...this.surveys];
   }
   setSurvey(id: number) {
     this.selectedId = this.selectedId === id ? undefined : id;
@@ -32,7 +33,7 @@ export class SurveysService {
     if (this.selectedId) {
       // console.log('Survey is chosen and ID = ', this.selectedId);
       return (
-        this.surveys.find(
+        this.filteredData.find(
           (survey) => survey['TEMPLATE_ID'] === this.selectedId
         ) ?? 0
       );
@@ -43,7 +44,7 @@ export class SurveysService {
   }
   getSurveyById(id: number) {
     let chosenSurvey;
-    this.surveys.forEach((survey) => {
+    this.filteredData.forEach((survey) => {
       for (const singleSurvey in survey) {
         if (survey[singleSurvey]['TEMPLATE_ID'] === id) {
           chosenSurvey = survey[singleSurvey];
@@ -55,11 +56,13 @@ export class SurveysService {
   }
 
   filterSurveys(filter: string) {
-    console.log(this.surveys);
-    this.surveys[0] = this.surveys[0].filter((e) => {
-      console.log(e.SurveyName.toLowerCase(), '***', filter.toLowerCase());
-      return e.SurveyName.toLowerCase().includes(filter.toLowerCase());
-    });
-    console.log(this.surveys);
+    if (!filter) {
+      return;
+    } else {
+      this.filteredData[0] = [...this.getSurveys()[0]].filter((e) => {
+        return e.SurveyName.toLowerCase().includes(filter.toLowerCase());
+      });
+    }
+    console.log(this.surveys[0], this.filteredData[0]);
   }
 }

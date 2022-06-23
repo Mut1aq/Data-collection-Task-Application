@@ -2,11 +2,15 @@
   <app-status-tab class="w-100"></app-status-tab>
 
   <div>
-    <button value="list" (click)="viewChange($event.target)">list</button>
-    <button value="grid" (click)="viewChange($event.target)">Grid</button>
+    <button value="list" (click)="viewChange($event.target)">
+      <i class="fa-solid fa-list"></i>
+    </button>
+    <button value="grid" (click)="viewChange($event.target)">
+      <i class="fa-solid fa-table-cells"></i>
+    </button>
   </div>
-  <div [ngSwitch]="selectedType">
-    <app-grid-list *ngSwitchCase="'grid'"></app-grid-list>
-    <app-card-list *ngSwitchDefault class="w-100"></app-card-list>
+  <div>
+    <app-card-list [hidden]="viewList"></app-card-list>
+    <app-grid-list [hidden]="viewGrid"></app-grid-list>
   </div>
 </section>

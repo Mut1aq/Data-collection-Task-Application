@@ -17,16 +17,13 @@ export class GridListComponent {
   result: any;
 
   constructor(public surveysService: SurveysService) {
-    this.surveys = this.surveysService.getSurveys();
-    // console.log(this.surveys);
+    this.surveys = this.surveysService.filteredData;
   }
 
   ngOnInit() {
     this.result = this.surveys[0];
 
-    this.dataSource =
-      new MatTableDataSource(this.result) ??
-      new MatTableDataSource(this.surveys[0] as any);
+    this.dataSource = new MatTableDataSource(this.result);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
