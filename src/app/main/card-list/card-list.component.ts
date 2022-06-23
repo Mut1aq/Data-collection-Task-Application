@@ -18,10 +18,7 @@ export class CardListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.surveys = this.surveysService.surveys;
-    // await this.surveysService.fetchSurveys();
-    // this.surveys = this.surveysService.getSurveys();
-    // console.log(this.surveys);
+    this.surveys = this.surveysService.filteredData;
   }
   onSelectCard(id: number) {
     this.surveysService.setSurvey(id);

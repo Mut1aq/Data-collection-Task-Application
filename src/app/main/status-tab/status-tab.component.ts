@@ -25,6 +25,7 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
     this.surveysService.filterSurveys(filterValue);
   }
 
@@ -32,7 +33,6 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
     const currentSurvey = this.surveysService.getSurveyById(
       this.surveysService.selectedId
     );
-    console.log(this.surveysService.getSurvey());
 
     let dialogRef = this.dialog.open(DialogComponent, {
       data: currentSurvey,

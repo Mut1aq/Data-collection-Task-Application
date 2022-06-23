@@ -15,10 +15,10 @@
   <div class="col-6 w-50">
     <div>
       <mat-tab-group class="">
-        <mat-tab label="Published"> </mat-tab>
-        <mat-tab label="Expired"> </mat-tab>
-        <mat-tab label="Closed"> </mat-tab>
-        <mat-tab label="All Surveys"> </mat-tab>
+        <mat-tab (click)="applyFilter($event)" label="Published"> </mat-tab>
+        <mat-tab (click)="applyFilter($event)" label="Expired"> </mat-tab>
+        <mat-tab (click)="applyFilter($event)" label="Closed"> </mat-tab>
+        <mat-tab (click)="applyFilter($event)" label="All Surveys"> </mat-tab>
       </mat-tab-group>
     </div>
   </div>
