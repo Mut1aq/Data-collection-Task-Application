@@ -20,9 +20,27 @@ export class SurveyDataResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.surveysService.fetchSurveys().pipe(
       map((value) => {
-        console.log('HI');
+        console.log(value);
         this.surveysService.surveys = value;
-        // console.log(typeof value);
+
+        // Fix Null values in Survey data
+        this.surveysService.surveys.forEach((survey) => {
+          for (const singleSurvey in survey) {
+            if (!survey[singleSurvey]['SurveyPeriods']) {
+              survey[singleSurvey]['SurveyPeriods'] =
+                '[{"ID":21659,"START_DATE":"2021-01-26T00:00:00","END_DATE":"2022-02-28T00:00:00"}]';
+            }
+            // Parse data to access ['START_DATE'] and ['END_DATE']
+            survey[singleSurvey]['SurveyPeriods'] = JSON.parse(
+              survey[singleSurvey]['SurveyPeriods']
+            );
+
+            //  assign new key ['multiDate'] (Periods)
+            survey[singleSurvey]['multiDate'] =
+              survey[singleSurvey]['SurveyPeriods'] &&
+              survey[singleSurvey]['SurveyPeriods'].length > 1;
+          }
+        });
         return value;
       })
     );

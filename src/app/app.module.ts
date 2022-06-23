@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    MatRadioModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],

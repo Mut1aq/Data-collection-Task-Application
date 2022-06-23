@@ -16,36 +16,22 @@ export class GridListComponent {
   dataSource: MatTableDataSource<any>;
   result: any;
 
-  constructor(public surveysService: SurveysService) {}
-
-  ngOnInit() {
+  constructor(public surveysService: SurveysService) {
     this.surveys = this.surveysService.getSurveys();
-    console.log(this.surveys);
-
-    this.surveys.forEach((survey) => {
-      for (const singleSurvey in survey) {
-        if (!survey[singleSurvey]['SurveyPeriods']) {
-          survey[singleSurvey]['SurveyPeriods'] =
-            '[{"ID":21659,"START_DATE":"2021-01-26T00:00:00","END_DATE":"2022-02-28T00:00:00"}]';
-          // chosenSurvey = survey[singleSurvey];
-        }
-        survey[singleSurvey]['SurveyPeriods'] = JSON.parse(
-          survey[singleSurvey]['SurveyPeriods']
-        );
-        survey[singleSurvey]['multiDate'] =
-          survey[singleSurvey]['SurveyPeriods'] &&
-          survey[singleSurvey]['SurveyPeriods'].length > 1;
-      }
-    });
+    // console.log(this.surveys);
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.result = this.surveys[0];
 
-    this.dataSource = new MatTableDataSource(this.result);
+    this.dataSource =
+      new MatTableDataSource(this.result) ??
+      new MatTableDataSource(this.surveys[0] as any);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  ngAfterViewInit() {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

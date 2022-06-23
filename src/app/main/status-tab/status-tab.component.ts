@@ -12,7 +12,6 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class StatusTabComponent implements OnInit, AfterViewInit {
   newSurveyName: string = '';
-  surveys: Survey[] = [];
 
   constructor(
     public http: HttpClient,
@@ -22,11 +21,11 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {}
 
-  ngOnInit() {
-    console.log('1');
-    // await this.surveysService.fetchSurveys();
-    // this.surveys = this.surveysService.getSurveys();
-    // console.log(this.surveys);
+  ngOnInit() {}
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.surveysService.filterSurveys(filterValue);
   }
 
   openDialog() {
@@ -40,9 +39,8 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(currentSurvey, '***', currentSurvey['SurveyName']);
       let english = /^[A-Za-z0-9]*$/;
-      console.log(result);
+
       if (result === 'noChange') {
         console.log('No Changes made');
       } else if (result.length >= 4 && english.test(result)) {
