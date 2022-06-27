@@ -55,12 +55,29 @@ export class SurveysService {
     return chosenSurvey;
   }
 
-  filterSurveys(filter: string) {
+  filterSurveysByName(filter: string) {
     if (!filter) {
       return;
     } else {
       this.filteredData[0] = [...this.getSurveys()[0]].filter((e) => {
         return e.SurveyName.toLowerCase().includes(filter.toLowerCase());
+      });
+    }
+    console.log(this.surveys[0], this.filteredData[0]);
+  }
+
+  filterSurveysByType(filter: string) {
+    if (!filter || filter === 'All Surveys') {
+      console.log(filter);
+      this.filteredData[0] = [...this.getSurveys()[0]];
+
+      return;
+    } else {
+      this.filteredData[0] = [...this.getSurveys()[0]].filter((e) => {
+        console.log(e);
+        return e['SURVEY_STATUS_EN']
+          .toLowerCase()
+          .includes(filter.toLowerCase());
       });
     }
     console.log(this.surveys[0], this.filteredData[0]);

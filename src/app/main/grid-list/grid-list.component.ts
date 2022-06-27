@@ -11,24 +11,24 @@ import { SurveysService } from '../../services/surveys.service';
   styleUrls: ['./grid-list.component.css'],
 })
 export class GridListComponent {
-  surveys: Survey[] = [];
+  surveys: any = [];
   displayedColumns: string[] = ['SurveyName', 'From', 'To', 'Period'];
   dataSource: MatTableDataSource<any>;
-  result: any;
 
-  constructor(public surveysService: SurveysService) {
-    this.surveys = this.surveysService.filteredData;
+  constructor(public surveysService: SurveysService) {}
+
+  ngOnInit() {}
+  onSelectCard(id: number) {
+    this.surveysService.setSurvey(id);
   }
 
-  ngOnInit() {
-    this.result = this.surveys[0];
-
-    this.dataSource = new MatTableDataSource(this.result);
+  ngAfterViewInit() {
+    this.surveys = this.surveysService.filteredData;
+    console.log(this.surveys);
+    this.dataSource = new MatTableDataSource(this.surveys[0]);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
-  ngAfterViewInit() {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
