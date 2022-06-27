@@ -3,7 +3,13 @@
     <!-- ID Column -->
     <ng-container matColumnDef="SurveyName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Survey Name</th>
-      <td mat-cell *matCellDef="let row">{{ row["SurveyName"] }}</td>
+      <td
+        mat-cell
+        *matCellDef="let row"
+        (click)="onSelectCard(row['TEMPLATE_ID'])"
+      >
+        {{ row["SurveyName"] }}
+      </td>
     </ng-container>
 
     <!-- Progress Column -->

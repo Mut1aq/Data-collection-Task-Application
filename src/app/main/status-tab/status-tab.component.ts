@@ -22,11 +22,18 @@ export class StatusTabComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
 
   ngOnInit() {}
+  applyTypeFilter(event: Event) {
+    const filterValue = event.target as HTMLInputElement;
+    // console.log(filterValue.childNodes[1].textContent );
+    this.surveysService.filterSurveysByType(
+      filterValue?.childNodes[1]?.textContent
+    );
+  }
 
-  applyFilter(event: Event) {
+  applyNameFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log(filterValue);
-    this.surveysService.filterSurveys(filterValue);
+    this.surveysService.filterSurveysByName(filterValue);
   }
 
   openDialog() {
