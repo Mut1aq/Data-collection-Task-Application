@@ -1,4 +1,4 @@
-# Task 1
+# Angular Project
 
 This project uses a lot of the Angular functionality and methods, and strictly TypeScript for optimized compatibility
 
